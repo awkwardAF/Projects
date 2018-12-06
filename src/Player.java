@@ -1,4 +1,4 @@
-import java.util.Scanner;
+﻿import java.util.Scanner;
 
 import static java.lang.Math.random;
 
@@ -9,11 +9,14 @@ public class Player implements PlayerInt {
     String name = null;
     boolean sword = false;
 
+    // возвращает имя персонажа
     @Override
     public String getName() {
         return name;
     }
 
+
+    // попытка поиска меча
     public void searchSword () {
         if (Math.random() > 0.75) {
             System.out.println("Вы нашли счастливый меч!");
@@ -22,11 +25,13 @@ public class Player implements PlayerInt {
         else System.out.println("Меч найти не удалось");
     }
 
+    // проверяет на наличие меча у игрока
     @Override
     public boolean hasSword() {
         return sword;
     }
 
+    // игрок наносит удар
     @Override
     public void attack(Player player, int a) {
         if (a == 99) {
@@ -48,11 +53,13 @@ public class Player implements PlayerInt {
         }
     }
 
+    // выдает имя персонажу
     @Override
     public void setName(String newName) {
         name = newName;
     }
 
+    // возвращает текущее хп персонажа
     @Override
     public int getHP() {
         return hp;
@@ -63,13 +70,15 @@ public class Player implements PlayerInt {
 
     }
 
+    // проверка на то, что удар нанесен
     private boolean action(int a) {
         String b = "0." + a;
         if (random() > Double.valueOf(b)) {
             System.out.println("Удар успешно нанесен!");
             return true;
         }
-        if (hasSword()) {
+        // если у персонажа есть меч
+        else if (hasSword()) {
             if (random() > Double.valueOf(b)) {
                 System.out.println("Вы попали благодаря мечу");
                 return true;
